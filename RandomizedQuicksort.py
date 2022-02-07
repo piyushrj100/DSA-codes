@@ -1,7 +1,7 @@
 # By modifying the PARTITION procedure, we can design another randomized version of quicksort that uses this random-choice
 #  strategy. At each step of the quicksort algorithm, before the array is partitioned, we exchange element A[p] with an 
 # element chosen at random from A[p . . r]. This modification ensures that the pivot element x = A[p] is equally likely
-#  to be any of the r - p + 1 elements in the subarray. Thus, we expect the split of the input array to be reasonably 
+#  to be any of the r - p elements in the subarray. Thus, we expect the split of the input array to be reasonably 
 # well balanced on average. The randomized algorithm based on randomly permuting the input array also works well on 
 # average, but it is somewhat more difficult to analyze than this version.
 
