@@ -35,7 +35,6 @@ class LinkedList :
 
 
              
-            
 if __name__=='__main__' :
     ll=LinkedList()
     ll.insert_begin(465)
