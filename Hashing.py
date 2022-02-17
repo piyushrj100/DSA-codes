@@ -14,8 +14,9 @@ class Hashing :
         h=self.get_hash(index)
         return self.hash_table[h]
     
-    def add(self,key,val) :
+    def add(self,key,val) : 
         h=self.get_hash(key)
+
         self.hash_table[h]=val
 
     def delete(self,key) :
