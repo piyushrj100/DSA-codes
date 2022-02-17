@@ -27,6 +27,8 @@ class Hashing :
 hash=Hashing()
 hash.add('hello there',76)
 hash.add('Hello World',5)
+hash.add("Namaste",10)
 res=hash.get('hello there')
+
 print(res)
 
