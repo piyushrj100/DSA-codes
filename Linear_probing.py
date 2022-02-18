@@ -60,5 +60,4 @@ obj.delete("Orange")
 obj.add("Orange","Six")
 res=obj.search("Papaya")
 print(obj.hash_table[res][1])
-
 print(obj.hash_table)
