@@ -6,7 +6,7 @@ class Hashing :
     def get_unicode(self,key):
         uni=0
         for char in key:
-            uni+=ord(char)
+            uni+=ord(char) 
         return uni
         
     
@@ -47,7 +47,7 @@ class Hashing :
         if res is None : 
             print("Element not found")
             return
-        self.hash_table[res]=('$','$')
+        self.hash_table[res]=('$','$')  
     
 
 obj=Hashing(10)

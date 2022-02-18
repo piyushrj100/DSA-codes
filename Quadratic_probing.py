@@ -2,7 +2,7 @@
  #let c=d=1, then 
  #QP=(h(k)+i+i^2)%m
  #m is the total capacity of the hash table.
- #h(k)=key%m
+ #h(k)=key%m 
 
 class Hashing:
     def __init__(self,capacity) :
@@ -66,12 +66,4 @@ obj.add("Mango",5)
 print(obj.hash_table[res][1])
 
 print(obj.hash_table)
-    
-
-        
-
-
-
-
-    
-          
+         
