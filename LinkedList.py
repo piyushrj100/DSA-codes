@@ -116,7 +116,4 @@ if __name__=='__main__' :
     ll.delete_at_pos(5)
     ll.del_end()
 
-    ll.print_list() 
-   
-
-
+    ll.print_list()
