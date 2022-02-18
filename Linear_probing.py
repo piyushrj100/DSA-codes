@@ -33,7 +33,7 @@ class Hashing :
         h=code%self.capacity
         index=0
         hs=start=h
-        while self.hash_table[h] :
+        while self.hash_table[hs] :
 
             if self.hash_table[hs][0]==key :
                 return hs
@@ -62,21 +62,3 @@ res=obj.search("Papaya")
 print(obj.hash_table[res][1])
 
 print(obj.hash_table)
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
