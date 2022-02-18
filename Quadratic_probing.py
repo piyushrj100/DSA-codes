@@ -4,10 +4,6 @@
  #m is the total capacity of the hash table.
  #h(k)=key%m
 
-from email.charset import QP
-from lib2to3.pgen2.token import LPAR
-
-
 class Hashing:
     def __init__(self,capacity) :
         self.capacity=capacity
