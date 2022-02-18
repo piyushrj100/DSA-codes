@@ -64,53 +64,6 @@ print(obj.hash_table[res][1])
 print(obj.hash_table)
 
 
-    
-        
-
-        
-
-
-
-
-        
-            
-
-
-
-
-
-
-
-    # def get_hash(self,key) :
-    #     hash=self.get_unicode(key)
-    #     h=hash%self.capacity
-    #     for index in range(self.capacity) :
-    #         if (h+index)%self.capacity==(None or '$') :
-    #             return (h+index)%self.capacity
-    
-    # def add(self,key,val) :
-    #     h=self.get_hash(key)
-    #     if h is None :
-    #         print("No space available")
-    #         return
-    #     self.hash_table[h]=val
-
-    # def search(self,key,val) :
-    #     ucode=self.get_uni(key)
-    #     h=ucode%self.capacity
-    #     lp=h
-    #     for idx in range(self.capacity) :
-    #         if self.hash_table[lp] is not None and self.hash_table[lp] != val:
-    #             lp=(h+idx) % self.capacity
-    #     if self.hash_table[lp]==val:
-    #         return val
-    #     else :
-    #         return None
-    
-    # def delete(self,key):
-    #     find=self.search()
-
-
 
 
             
