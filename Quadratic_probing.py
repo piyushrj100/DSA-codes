@@ -66,4 +66,3 @@ obj.add("Mango",5)
 print(obj.hash_table[res][1])
 
 print(obj.hash_table)
-         
