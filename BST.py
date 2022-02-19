@@ -3,7 +3,22 @@ class Treenode :
         self.data=val
         self.left=None
         self.right=None
-    
+
+
+############################################################## Method Description ###############################################################
+#                                                                                                                                               #
+# insert()              :      Inserts an element in the tree. Arguments: key , root node                                                       #
+# inorder()             :      Prints the inorder tree traversal of the tree. Arguments: root node.                                             #
+# postorder()           :      Prints the postorder tree traversal of the tree. Arguments: root node.                                           #
+# preorder()            :      Prints the preorder tree traversal of the tree. Arguments: root node.                                            #
+# search()              :      Returns true if the given element is found . Arguments: root node, search key                                    #
+# inorder_successor()   :      Returns the inorder successor of a particular node. Arguments: right subtree node                                #
+# delete()              :      Deletes the element if it is present in the tree. Returns None if not found. Arguments: root node,key            #
+# height()              :      Finds the height of the tree. Arguments: root node                                                               #
+# level_order()         :      Prints the level order traversal of the tree.                                                                    #
+# is_path_sum()         :      Returns True if the sum from root to leave is equal to the integer provided. Arguments : root node, integer.     # 
+#                                                                                                                                               #
+#################################################################################################################################################
 class BST :
     def __init__(self) :
         self.root=None
@@ -64,6 +79,9 @@ class BST :
     
         
     def delete(self,node, key):
+        found=self.search(node,key)
+        if found==False :
+            return None
  
         if node is None:
             return node
@@ -95,7 +113,35 @@ class BST :
             node.right = self.delete(node.right, temp.data)
  
         return node
+    
+    def height(self,node) :
+        if node is None :
+            return -1 
+        lh=self.height(node.left)
+        rh=self.height(node.right)
+        return (max(lh,rh)+1)
 
+    def level_order(self,node) :
+        if node is None :
+            return
+        Q=[]
+        Q.append(node)
+        while len(Q) >0   :
+            # print(len(Q)) 
+            print(Q[0].data," ",end="")
+            temp=Q.pop(0)
+            if temp.left is not None :
+                Q.append(temp.left)
+            if temp.right is not None :
+                Q.append(temp.right )
+        
+    def is_path_sum(self,node,sum) :
+        if node is None :
+            return(sum==0) 
+        temp=sum-node.data
+        return(self.is_path_sum(node.left,temp) or self.is_path_sum(node.right,temp) )
+            
+  
               
 if __name__=='__main__' :
     tree =BST()
@@ -106,16 +152,58 @@ if __name__=='__main__' :
     tree.insert(7,tree.root)
     tree.insert(12,tree.root)
     tree.insert(16,tree.root)
-    print(tree.root.data)
+
+    #Tree  after all insertions : `  `
+
+    ''' 
+            10
+            / \
+            4  11
+             \   \
+              7  15
+                  / \
+                  12 16
+                  
+                  '''
+
+    # print(tree.root.data)
+    print("Inorder-->"," ",end="")
     tree.inorder(tree.root)
-    print("\n")
+    print("\nPreorder-->"," ",end="")
     tree.preorder(tree.root)
-    print("\n")
+    print("\nPostorder-->"," ",end="")
     tree.postorder(tree.root)
     res=tree.search(tree.root,90)
-    print(res)
-    tree.delete(tree.root,11)
+    if res ==True :
+        print("\nElement found")
+    else :
+        print("\nNot Found")
+    d=tree.delete(tree.root,11)
+    if d is None :
+        print("Unable to delete! Element does not exist")
+    else : 
+        print("Element deleted!!")
+    
+    #Tree after deletion :
+    '''
+            10
+            / \
+           4   15
+            \  / \
+             7 12 16
+
+                  '''
+    print("Inorder-->"," ",end="")   
     tree.inorder(tree.root)
+    print(f"\nHeight of the tree: {tree.height  (tree.root)}")
+    tree.level_order(tree.root)
+    is_sum=tree.is_path_sum(tree.root,211)
+    if is_sum :
+        print("\nPath has the given sum!")
+    else :
+        print("\nNo path has the given sum!")
+    
+
 
 
 
