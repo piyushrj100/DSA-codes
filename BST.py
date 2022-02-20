@@ -4,7 +4,7 @@ class Treenode :
         self.left=None
         self.right=None
 
-
+ 
 ############################################################## Method Description ###############################################################
 #                                                                                                                                               #
 # insert()              :      Inserts an element in the tree. Arguments: key , root node                                                       #
@@ -140,6 +140,20 @@ class BST :
             return(sum==0) 
         temp=sum-node.data
         return(self.is_path_sum(node.left,temp) or self.is_path_sum(node.right,temp) )
+    
+    def total_nodes(self,node) :
+        if node is None :
+            return 0
+        return(self.total_nodes(node.left)+self.total_nodes(node.right)+1)
+    
+    def count_leaves(self,node) :
+        if node is None : 
+            return 0
+        if node.left is None and node.right is None :
+            return 1
+        return (self.count_leaves(node.left) + self.count_leaves(node.right))
+        
+        
             
   
               
@@ -195,13 +209,17 @@ if __name__=='__main__' :
                   '''
     print("Inorder-->"," ",end="")   
     tree.inorder(tree.root)
-    print(f"\nHeight of the tree: {tree.height  (tree.root)}")
+    print(f"\nHeight of the tree: {tree.height(tree.root)}")
     tree.level_order(tree.root)
     is_sum=tree.is_path_sum(tree.root,211)
     if is_sum :
         print("\nPath has the given sum!")
     else :
         print("\nNo path has the given sum!")
+    
+    total=tree.total_nodes(tree.root)
+    print(total)
+    print(tree.count_leaves(tree.root))
     
 
 
