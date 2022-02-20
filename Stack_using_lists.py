@@ -12,7 +12,6 @@ stack_list=[]
 stack_list.append(1)
 stack_list.append(2) 
 stack_list.append(3) 
-
 print(stack_list)
 
 itr=stack_list 
