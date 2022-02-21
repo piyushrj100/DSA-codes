@@ -1,3 +1,5 @@
+import sys
+
 class Treenode :
     def __init__(self,data) :
         self.data=data
@@ -68,6 +70,53 @@ class Binary_tree :
         temp=tnode.left
         tnode.left=tnode.right
         tnode.right=temp
+    
+    def findmax(self,tnode,max_ele=-sys.maxsize-1) :
+        if tnode is not None :
+            value=tnode.data
+            left=self.findmax(tnode.left,max_ele)
+            right=self.findmax(tnode.right,max_ele)
+            if left>right :
+                max_ele=left    
+            else :
+                max_ele=right
+
+            if(value>max_ele) :
+                max_ele=value
+        return max_ele
+    
+    def search(self,tnode,key) : 
+        if tnode is None :
+            return False
+        if tnode.data==key:
+            return True
+        return self.search(tnode.left,key)
+        return self.search(tnode.right,key)
+    
+    def findpath(self,tnode,path,pathlen) :
+        if tnode is None :
+            return
+        if(len(path)>pathlen):
+            path[pathlen]=tnode.data
+        else:
+            path.append(tnode.data)
+
+        pathlen+=1
+
+        #it's a leaf, so print the path that led to here
+        if (tnode.left is None and tnode.right is None) :
+            self.printpath(path,pathlen)
+        else:
+            self.findpath(tnode.left,path,pathlen)
+            self.findpath(tnode.right,path,pathlen)
+    
+    def printpath(self,path,pathlen) :
+        for i in path[0:pathlen] :  
+            print(i," ",end="")
+        print()
+
+
+        
 
 #driver code 
 
@@ -89,5 +138,22 @@ if __name__=='__main__' :
     tree.preorder(tree.root)
     print("\nlevel_order traversal-->"," ",end="")
     tree.level_order(tree.root)
+    max_el=tree.findmax(tree.root)
+    if max_el==(-sys.maxsize-1) :
+        print("\nEmpty tree !")
+    else :
+        print("\nMax element: ", max_el)
+    find=tree.search(tree.root,81)
+    if find==True :
+        
+        print("\nElement is found")
+    else: 
+        print("\nElement not found")
+    print(find)
+    print("Prints all the path from root to leaves:")
+    array=[]
+    tree.findpath(tree.root,array,0) #-->O(n)
+
+    
     
 
