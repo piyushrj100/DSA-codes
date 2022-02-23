@@ -62,10 +62,7 @@ class Binary_heap :
         self.maxsize=len(array)
         self.Increase_key(self.maxsize-1,key)
             
-    
-    
-    
-
+            
 if __name__=='__main__'  :
     array=[4,1,3,2,16,9,10,14,8,7]
     heap=Binary_heap(array)
