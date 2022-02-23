@@ -13,7 +13,7 @@ class Binary_heap :
     
 
     
-    def Max_Heapify (self,array,index) : 
+    def Max_Heapify (self,index) : 
         l=self.left(index) 
         r=self.right(index)
 
@@ -27,13 +27,13 @@ class Binary_heap :
             temp=self.array[index]
             self.array[index] =self.array[largest]
             self.array[largest]=temp  
-            self.Max_Heapify(self.array,largest)
+            self.Max_Heapify(largest)
         
     def Build_max_heap(self) :
         length=self.maxsize//2
         # print(self.maxsize)
         for idx in reversed(range (0,length)) :
-            self.Max_Heapify(self.array,idx)
+            self.Max_Heapify(idx)
     
     def Extract_max(self) : #O(lgn)
         if self.maxsize ==0 :
@@ -44,7 +44,7 @@ class Binary_heap :
         self.array.pop(self.maxsize-1)
         self.maxsize=len(self.array)
         # self.maxsize=self.maxsize-1
-        self.Max_Heapify(self.array,0)
+        self.Max_Heapify(0)
 
     def Increase_key(self,index,key) : #O(logn)
         if key<self.array[index] :
