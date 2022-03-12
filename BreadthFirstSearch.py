@@ -80,12 +80,6 @@ if __name__=='__main__':
 
 
 
-    # graph.BFS(1)
-
-    # print(graph.vertices)
-
-
-
 
 
 
