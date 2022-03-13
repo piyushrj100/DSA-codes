@@ -3,7 +3,7 @@ import queue
 from math import inf 
 class Vertex :
     def __init__(self) :
-        self.color=None 
+        self.color='white' 
         self.adj=[]
         self.id=None
         self.pred=None
@@ -16,6 +16,7 @@ class Graph :
         for idx,vertex in enumerate(self.vertices) :
             vertex.id=idx
         self.time=None
+        self.time=0
         self.stack=[]
     def dfs_visit(self,u) :
         self.time+=1
@@ -33,10 +34,10 @@ class Graph :
         print('v'+str(u.id)+" ", end="")
     
     def dfs(self) :
-        for vertex in self.vertices :
-            vertex.color='white' 
-            vertex.pred=None
-        self.time=0
+        # for vertex in self.vertices :
+        #     vertex.color='white' 
+        #     vertex.pred=None
+        # self.time=0
 
         for vertex in self.vertices :
             if vertex.color=='white' :
@@ -64,10 +65,10 @@ class Graph :
         stack = sorted(self.vertices, key=lambda u:u.finish)
         t_graph=self.transpose()
         
-        for vertex in t_graph.vertices :
-            vertex.color='white' 
-            vertex.pred=None
-        t_graph.time=0
+        # for vertex in t_graph.vertices :
+        #     vertex.color='white' 
+        #     vertex.pred=None
+        # t_graph.time=0 
         print("The Connected components are : ")
         while stack :
             ins=stack.pop()
@@ -81,6 +82,34 @@ class Graph :
     
 
 if __name__=='__main__' :
+    
+    #Both the graphs are from CLRS book
+    print("Finding strongly connected components for first graph.....\n")
+    v0=Vertex()
+    v1=Vertex()
+    v2=Vertex()
+    v3=Vertex()
+    v4=Vertex()
+    v5=Vertex()
+    v6=Vertex()
+    v7=Vertex()
+
+
+    v0.adj=[1]
+    v1.adj=[2,4,5]
+    v2.adj=[3,6]
+    v3.adj=[2,7]
+    v4.adj=[0]
+    v5.adj=[6]
+    v6.adj=[5,7]
+    v7.adj=[7]
+    vertices=[v0,v1,v2,v3,v4,v5,v6,v7] 
+    graph=Graph(vertices)
+    graph.SCC()
+
+    print("\n\n")
+
+    print("Finding strongly connected components for second graph.....\n")
     v0=Vertex()
     v1=Vertex()
     v2=Vertex()
@@ -95,8 +124,11 @@ if __name__=='__main__' :
     v4.adj=[3]
     v5.adj=[5]
 
-    vertices=[v0,v1,v2,v3,v4,v5] 
+    vertices_1=[v0,v1,v2,v3,v4,v5] 
 
-    graph=Graph(vertices)
+    graph_1=Graph(vertices_1)
     
-    graph.SCC()
+    graph_1.SCC()
+
+
+
