@@ -1,3 +1,4 @@
+from collections import defaultdict 
 
 class Edge:
     def __init__(self,src,dest) :
@@ -43,7 +44,18 @@ class Graph :
             if self.make_set[i]==i :
                 count+=1
         return count
+    def print_components(self) :
+        d=defaultdict(list) 
+        for i in range(self.vertex) :
+            x=self.find_set(i)
+            d[x].append(i)
+        print("The components of the graph are :  ")    
+        for value in d.values() :
+            comp="  ".join( str(v) for v in value)
+            print(comp)
+        
 
+ 
  
 if __name__=='__main__' :
     vertex=10
@@ -55,9 +67,9 @@ if __name__=='__main__' :
     |    /|     |         |
     |  /  |     |         |
     | /   |     |         |
-    2/    3     6         8   
+    2     3     6         8   
     
-    
+
     '''
     graph=Graph(vertex)
     graph.addEdge(0,1)
@@ -71,5 +83,7 @@ if __name__=='__main__' :
     graph.connected_component()
     print("Check if the nodes 0 and 9 belong to the same component : ")
     # print(graph.same_component(0,9))
+    graph.print_components()
     print("Total number of connected components : ")
     print(graph.count_component())
+    
