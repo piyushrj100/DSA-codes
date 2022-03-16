@@ -9,25 +9,39 @@ class Edge:
 class Graph :    
     def __init__(self,vertex) :
         self.vertex=vertex
-        self.make_set=[-1]*self.vertex
+        self.parent=[-1]*self.vertex
+        self.rank=[-1]*self.vertex
         self.EdgeList=[]
     
     def addEdge(self,src,dest) :
         self.EdgeList.append(Edge(src,dest))
     
-    def find_set(self,i) :
-        while self.make_set[i] != i :
-            i=self.make_set[i]
-        return i 
-    def union(self,u,v) : 
-          root_u=self.find_set(u)
-          root_v=self.find_set(v)
-          self.make_set[root_u]=root_v
+    def Make_set (self) :
+        for i in range (self.vertex) :
+            self.parent[i]=i
+            self.rank[i]=0
+    def find_set(self,u) :
+        if self.parent[u]==u :
+            return u
+        self.parent[u]=self.find_set(self.parent[u])
+        return self.parent[u]
+
+    def union(self,u,v) :
+        parent_u=self.find_set(u)
+        parent_v=self.find_set(v)
+        if parent_u != parent_v :
+            if self.rank[parent_u] < self.rank[parent_v] :
+
+                self.parent[parent_u]=parent_v
+            elif self.rank[parent_v]<self.rank[parent_u] :
+                self.parent[parent_v]=parent_u
+            else :
+                self.parent[parent_v]=parent_u
+                self.rank[parent_u]+=1
 
     
     def connected_component(self) :
-        for i in range(self.vertex) :
-            self.make_set[i]=i
+        self.Make_set()
         for edge in self.EdgeList:
             if self.find_set(edge.src) != self.find_set(edge.dest) :
                 self.union(edge.src,edge.dest) 
@@ -40,8 +54,8 @@ class Graph :
     def count_component(self) :
         self.connected_component()
         count=0
-        for i in range(len(self.make_set)) :
-            if self.make_set[i]==i :
+        for i in range(len(self.parent)) :
+            if self.parent[i]==i :
                 count+=1
         return count
     def print_components(self) :
