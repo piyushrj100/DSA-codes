@@ -103,6 +103,22 @@ class Graph_MST :
                     self.vertices[v].pred=u
                     self.vertices[v].key=w
                     Q.decrease_key(self.vertices[v].id,w)
+    
+    def print_mst(self,root) :
+        count=0
+        print("Printing the Edge(u,v) and weight included in mst :\n")
+        print('u  -- v  = weight')
+        print('-----------------')
+        for vertex in self.vertices : 
+            if vertex.id==root.id :
+                continue 
+            print('v'+str(vertex.pred.id)+' -- '+ 'v'+str(vertex.id)+' = '+str(vertex.key))
+            count+=vertex.key
+        
+        print("\n Total weight of MST: ", count)
+        print()
+
+
 
 
 
@@ -159,8 +175,9 @@ if __name__=='__main__' :
     vertices=[v0,v1,v2,v3,v4,v5,v6,v7,v8]
 
     graph_mst=Graph_MST(vertices)
-    graph_mst.mst_prim(v0)
-
+    root=v0
+    graph_mst.mst_prim(root)
+    graph_mst.print_mst(root)
     
     
 
