@@ -69,8 +69,10 @@ class Heap :
 
         if val>self.array[index].key :
             print("Value smaller than the decrease key value! Unable  to perform the operation")
+            return
         if self.maxsize<=index :
             print("Wrong index ")
+            return
         self.array[index].key=val
 
         while index>0 and self.array[self.parent(index)].key>self.array[index].key :
