@@ -12,7 +12,7 @@ Time complexity :  O(N*W) or O(num*capacity)
 
 '''
 
-def knapsack (capacity,num,val,weight) :
+def knapsack_it_dp (capacity,num,val,weight) :
     dp =[[0 for i in range(capacity+1)] for j in range (num+1)]
 
     for i in range (1,num+1):
@@ -32,13 +32,17 @@ def knapsack (capacity,num,val,weight) :
                 dp[i][w]=dp[i-1][w] 
 
     return dp[num][capacity]
+    
 
 if __name__=='__main__' :
     capacity=50
     weight=[10,20,30]
     val=[60,100,120]
     
-    result=knapsack(capacity,len(val),val,weight)
+    print("0/1 Knapsack using iterative DP")
+    print("--------------------------------")
+    result=knapsack_it_dp(capacity,len(val),val,weight)
     print("Maximum total profit :", result)
+    
 
 
