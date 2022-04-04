@@ -64,7 +64,7 @@ class Graph :
             x=self.find_set(i)
             d[x].append(i)
         print("The components of the graph are :  ")    
-        for value in d.values() :
+        for value in d.values() : 
             comp="  ".join( str(v) for v in value)
             print(comp)
         
