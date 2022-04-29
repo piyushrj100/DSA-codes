@@ -1,5 +1,5 @@
-#Bellman Ford algorithm solves the single source shortest paths problem in the general case where 
-#edge weights may be negative.Bellman ford algorithm returns a boolean value indicating whether
+# Bellman Ford algorithm solves the single source shortest paths problem in the general case where 
+# edge weights may be negative.Bellman ford algorithm returns a boolean value indicating whether
 # or not there is such a negative cycle reachable from the source. If such cycle exists, 
 # there is no such solution.
 # Bellman Ford algorithm runs in O(VE)
