@@ -25,7 +25,7 @@ class Node :
         #adds a new node in children list at the particular index 
        self.children[Node.get_index(character)] =Node(character)
        
-    def setEnd(self) :
+    def set_end(self) :
         self.word_completed= True
     
     def unset_end(self) :
@@ -45,7 +45,7 @@ class Trie :
                 current_node.add_node(character)
             current_node = current_node.get_node(character)
             
-        current_node.setEnd()
+        current_node.set_end()
     
     def search_word(self, word) :
         current_node = self.root
@@ -65,6 +65,8 @@ if __name__ == '__main__' :
     trie.insert_word('abcd')
     trie.insert_word('ab')
     trie.insert_word('PiYuSh')
+
+    #prints the  wrd_end for 'd' node of 'abcd' , After insertion  it should be set to True
     print(trie.root.children[0].children[1].children[2].children[3].word_completed)
     search = trie.search_word('abcd')
     print(search.__dict__)
@@ -73,7 +75,7 @@ if __name__ == '__main__' :
     search = trie.search_word('PiYuSh')
     print(search.__dict__)
     trie.delete_word('abcd')
-
+    #prints the  wrd_end for 'd' node of 'abcd' , After deleting it should be set to False
     print(trie.root.children[0].children[1].children[2].children[3].word_completed)
 
 
