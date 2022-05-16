@@ -9,19 +9,27 @@ class Node :
         #checking the number of words whose prefic the character is  
         self.counter=1
     
-    
-    
+    @staticmethod
+    def get_index(character) :
+        return ord(character.lower())-ord('a')
+
     def contains_char(self,character) :
-       return self.children[ord(character.lower())-ord('a')] != None
+       #checks if the index in children is null or contains an object.  
+       return self.children[Node.get_index(character)] != None
     
     def get_node(self,character) :
-        return self.children[ord(character.lower())-ord('a')]
+        #returns the node object present at the index in children
+        return self.children[Node.get_index(character)]
     
-    def put_node(self,character) :
-       self.children[ord(character.lower())-ord('a')] =Node(character)
+    def add_node(self,character) :
+        #adds a new node in children list at the particular index 
+       self.children[Node.get_index(character)] =Node(character)
        
     def setEnd(self) :
         self.word_completed= True
+    
+    def unset_end(self) :
+        self.word_completed = False
     
     
 class Trie :
@@ -30,17 +38,42 @@ class Trie :
 
     
 
-    def insert_node(self, word) :
+    def insert_word(self, word) :
         current_node = self.root 
         for character in word :
             if  current_node.contains_char(character) is False :
-               current_node.put_node(character)
+                current_node.add_node(character)
             current_node = current_node.get_node(character)
+            
         current_node.setEnd()
+    
+    def search_word(self, word) :
+        current_node = self.root
+        for character in word :
+            if current_node.contains_char(character) is False :
+                return None
+            current_node = current_node.get_node(character)
+        return current_node
+    
+    def delete_word(self, word) :
+        node = self.search_word(word) 
+        if node is not None :
+            node.unset_end()           
 
 if __name__ == '__main__' :
     trie = Trie()
-    trie.insert_node('abcd')
+    trie.insert_word('abcd')
+    trie.insert_word('ab')
+    trie.insert_word('PiYuSh')
+    print(trie.root.children[0].children[1].children[2].children[3].word_completed)
+    search = trie.search_word('abcd')
+    print(search.__dict__)
+    search = trie.search_word('ab')
+    print(search.__dict__)
+    search = trie.search_word('PiYuSh')
+    print(search.__dict__)
+    trie.delete_word('abcd')
+
     print(trie.root.children[0].children[1].children[2].children[3].word_completed)
 
 
