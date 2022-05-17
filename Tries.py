@@ -58,7 +58,17 @@ class Trie :
     def delete_word(self, word) :
         node = self.search_word(word) 
         if node is not None :
-            node.unset_end()           
+            node.unset_end()      
+
+    #returns true if words starting with a prefx is present --O(len)
+    def starts_with(self, prefix) :
+        current_node = self.root 
+        for character in prefix : 
+            if current_node.contains_char(character) is False :
+                return False 
+            current_node = current_node.get_node(character) 
+        return True
+
 
 if __name__ == '__main__' :
     trie = Trie()
@@ -75,7 +85,9 @@ if __name__ == '__main__' :
     search = trie.search_word('PiYuSh')
     print(search.__dict__)
     trie.delete_word('abcd')
-    #prints the  wrd_end for 'd' node of 'abcd' , After deleting it should be set to False
+    print(f" Starts with jkl ?? {trie.starts_with('jkl')}")
+    print(f" Starts with Pi ?? {trie.starts_with('Pi')}")
+    #prints the  word_end for 'd' node of 'abcd' , After deleting it should be set to False
     print(trie.root.children[0].children[1].children[2].children[3].word_completed)
 
 
