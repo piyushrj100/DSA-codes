@@ -41,6 +41,7 @@ class Trie :
     def __init__(self) :
         self.root = Node('/')
     
+    #O(len) time complexity 
     def insert_word(self,word) :
         current_node = self.root
         for character in word :
@@ -49,7 +50,8 @@ class Trie :
             current_node = current_node.get_node(character) 
             current_node.increase_prefix()
         current_node.increase_end() 
-
+    
+    #O(len) time complexity
     def count_prefix_words(self, prefix) :
         current_node = self.root 
         for character in prefix :
@@ -68,6 +70,7 @@ class Trie :
                 return 0
         return current_node.get_end()
     
+    #o(len) time complexity 
     def delete_word(self, word) :
         current_node = self.root 
         for character in word :
@@ -77,6 +80,15 @@ class Trie :
             else : 
                 return 
         current_node.delete_end()
+    
+    def search_word(self,word) :
+        current_node = self.root
+        for character in word :
+            if current_node.contains_char(character) is False :
+                return False 
+            current_node =current_node.get_node(character) 
+        return True 
+
 
 if __name__ == '__main__' :
     trie = Trie()
@@ -113,6 +125,11 @@ if __name__ == '__main__' :
     print(f'Words starting with mang--> {count_prefix}')
     count_prefix = trie.count_prefix_words('man')
     print(f'Words starting with man--> {count_prefix}')
+
+    #searching 
+    print(f"Is word fgh present ? {trie.search_word('fghj')}")
+    print(f"Is word fgh present ? {trie.search_word('mango')}")
+
 
 
 
