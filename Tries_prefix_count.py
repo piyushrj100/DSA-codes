@@ -1,7 +1,7 @@
 class Node :
 
-    def __init__(self,char) :
-        self.char = char
+    def __init__(self) :
+    
         self.children = [None]*26
         self.count_word_end_with = 0
         self.count_prefix = 0
@@ -17,7 +17,7 @@ class Node :
         return (self.children[Node.get_index(character)] != None)
     
     def add_node(self, character) :
-        self.children[Node.get_index(character)] = Node(character)
+        self.children[Node.get_index(character)] = Node()
     
     def increase_end(self) :
         self.count_word_end_with +=1
@@ -39,7 +39,7 @@ class Node :
 
 class Trie :
     def __init__(self) :
-        self.root = Node('/')
+        self.root = Node()
     
     #O(len) time complexity 
     def insert_word(self,word) :
