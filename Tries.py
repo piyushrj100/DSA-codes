@@ -7,7 +7,7 @@ class Node :
         #checks if the word has completed at this character
         self.word_completed = False
         #checking the number of words whose prefic the character is  
-        self.counter=1
+        
     
     @staticmethod
     def get_index(character) :
