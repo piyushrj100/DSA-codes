@@ -1,7 +1,7 @@
 class Node :
     
-    def __init__(self, char) :
-        self.char = char 
+    def __init__(self) :
+
         #children nodes for each 26 letters of the alphabet
         self.children=[None]*26
         #checks if the word has completed at this character
@@ -23,7 +23,7 @@ class Node :
     
     def add_node(self,character) :
         #adds a new node in children list at the particular index 
-       self.children[Node.get_index(character)] =Node(character)
+       self.children[Node.get_index(character)] =Node()
        
     def set_end(self) :
         self.word_completed= True
@@ -34,7 +34,7 @@ class Node :
     
 class Trie :
     def __init__(self) :
-        self.root=Node('/')
+        self.root=Node()
 
     
 
