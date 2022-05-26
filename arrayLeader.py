@@ -1,3 +1,5 @@
+#  An element is leader if it is greater than all the elements to its right side. And the rightmost element is always a leader
+
 def find_leader(array, size) :
     leader = array[size-1] 
     l_arr= []
