@@ -157,6 +157,47 @@ class Binary_tree :
                     Q.append(temp.right)
         return maxsum
 
+    def right_view(self,tnode) :
+        if tnode == None :
+            return
+        res=[] 
+        q=[]
+        q.append(tnode)
+        while q :
+            n=len(q)
+            while n>0 :
+                n-=1
+                temp = q.pop(0)
+                if n==0 :
+                    res.append(temp.data)
+                if temp.left :
+                    q.append(temp.left)
+                if temp.right :
+                    q.append(temp.right)
+        return res
+    
+    def left_view(self,tnode) :
+        if tnode==None :
+            return
+        q=[]
+        res=[]
+        q.append(tnode)
+        while q :
+            n=len(q)
+            for i in range(1,n+1) :
+                temp=q.pop(0)
+                if i == 1 :
+                    res.append(temp.data)
+                if temp.left :
+                    q.append(temp.left)
+                if temp.right :
+                    q.append(temp.right)
+        return res
+
+
+        
+
+
 
 if __name__=='__main__' :
     tree=Binary_tree()
@@ -176,6 +217,11 @@ if __name__=='__main__' :
     print("Height= ",h)
     sum=tree.max_level_sum(tree.root)
     print("Max level sum ",sum)
+    right=tree.right_view(tree.root)
+    print('The right view of the tree is : ', right )
+    left = tree.left_view(tree.root)
+    print('The left view of the tree is : ', left )
+
       
 
 
